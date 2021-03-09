@@ -1,1 +1,5 @@
 venv
+.spotify_caches
+.flask_session
+.idea
+config.json
