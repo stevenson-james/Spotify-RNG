@@ -3,3 +3,4 @@ venv
 .flask_session
 .idea
 config.json
+__pycache__
