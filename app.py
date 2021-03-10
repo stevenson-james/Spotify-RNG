@@ -14,10 +14,10 @@ app.config['SESSION_TYPE'] = 'filesystem'
 app.config['SESSION_FILE_DIR'] = './.flask_session/'
 Session(app)
 
-# config containing SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET, and SPOTIPY_REDIRECT_URI
+# CONFIG containing SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET, and SPOTIPY_REDIRECT_URI
 #   SPOTIPY_REDIRECT_URI must be added to your [app settings](https://developer.spotify.com/dashboard/applications)
-with open('config.json') as f:
-  config = json.load(f)
+with open('CONFIG.json') as f:
+  CONFIG = json.load(f)
 
 # list of 10000 words hosted by MIT
 word_response = requests.get('https://www.mit.edu/~ecprice/wordlist.10000')
@@ -41,9 +41,9 @@ def index():
 
     cache_handler = spotipy.cache_handler.CacheFileHandler(cache_path=session_cache_path())
     auth_manager = spotipy.oauth2.SpotifyOAuth(
-        client_id=config['SPOTIPY_CLIENT_ID'],
-        client_secret=config['SPOTIPY_CLIENT_SECRET'],
-        redirect_uri=config['SPOTIPY_REDIRECT_URI'],
+        client_id=CONFIG['SPOTIPY_CLIENT_ID'],
+        client_secret=CONFIG['SPOTIPY_CLIENT_SECRET'],
+        redirect_uri=CONFIG['SPOTIPY_REDIRECT_URI'],
         scope='user-read-playback-state,user-modify-playback-state',
         cache_handler=cache_handler,
         show_dialog=True)

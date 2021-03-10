@@ -1,7 +1,7 @@
 import os
 import json
 
-with open('config.json') as f:
+with open('CONFIG.json') as f:
   config = json.load(f)
 
 os.system('set FLASK_APP=app.py')
