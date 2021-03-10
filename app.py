@@ -61,11 +61,22 @@ def index():
     # Step 4. Signed in, ready to play random song
     spotify = spotipy.Spotify(auth_manager=auth_manager)
 
-    # Shows playing devices
-    res = spotify.devices()
-    if res['devices']:
-        # spotify.start_playback(uris=find_random_song(spotify))
-        return render_template('index.html')
+    is_active_device = False
+
+    # Gets playing devices
+    devices_result = spotify.devices()
+    for device in devices_result['devices']:
+        if device['is_active']:
+            is_active_device = True
+
+    if is_active_device:
+        random_track_uri = find_random_song(spotify)[0]
+        random_track = spotify.track(track_id=random_track_uri)
+        spotify.start_playback(uris=[random_track_uri])
+        return render_template('index.html',
+                               album_cover=random_track['album']['images'][0]['url'],
+                               track_name = random_track['name'],
+                               artist=random_track['artists'][0]['name'])
     else:
         return render_template('open_app.html')
 
