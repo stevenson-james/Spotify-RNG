@@ -1,0 +1,12 @@
+{%- extends "bootstrap/base.html" %}
+
+{% block title %}Spotify RNG{% endblock %}
+
+{% import "bootstrap/fixes.html" as fixes %}
+
+{% block head %}
+    {{super()}}
+    {{fixes.ie8()}}
+{%- endblock %}
+
+{% block content %}<h2>Spotify RNG</h2>{%- endblock %}

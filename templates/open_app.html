@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Spotify RNG</title>
-</head>
-<body>
+{%- extends "base.html" %}
+{% block content %}
+    {{ super() }}
     <h2>Open Spotify App to Play Song</h2>
     <a href="/">Play Random Song</a>
-    <a href="/sign_out">Sign Out<a/>
-</body>
-</html>
+    <a href="/sign_out">Sign Out</a>
+{% endblock %}

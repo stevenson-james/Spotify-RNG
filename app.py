@@ -1,6 +1,7 @@
 import os
 import json
 from flask import Flask, session, request, redirect, render_template
+from flask_bootstrap import Bootstrap
 from flask_session import Session
 import spotipy
 import requests
@@ -9,6 +10,7 @@ from random import randint
 from math import floor
 
 app = Flask(__name__)
+Bootstrap(app)
 app.config['SECRET_KEY'] = os.urandom(64)
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config['SESSION_FILE_DIR'] = './.flask_session/'
