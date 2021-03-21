@@ -9,4 +9,9 @@
     {{fixes.ie8()}}
 {%- endblock %}
 
+{% block styles -%}
+    {{super()}}
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='spotify-app.css')}}">
+{%- endblock %}
+
 {% block content %}<h2>Spotify RNG</h2>{%- endblock %}
